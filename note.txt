@@ -1,0 +1,18 @@
+CRUD (create, read , update, destory)
+    useful for managing resources
+
+
+php artisan make: controller controller_name
+
+configuration
+
+building Models
+
+Using eloquent
+
+pagination
+
+Relationships
+
+
+database \h - help

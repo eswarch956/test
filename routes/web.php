@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\testNewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,7 @@ Route::get('/contact-us', [PageController::class, 'contact']);
 
 Route::get('/values', [PageController::class, 'values']);
 
-Route::get('/operations/{operationtype}/{operand1}/{operand2}', function(){
-    return 'operation to be '.$operationtype ;
-});
+Route::get('/operations/{operationtype}/{operand1}/{operand2}',[PageController::class, 'operations']);
 
 ///(define the path, function or action need to be taken on requesting the path)
 
@@ -44,3 +43,4 @@ Route::get('/ecosystem', function () {
     return view('ecosyste');
 });
 
+Route::resource('event', testNewController::class);
