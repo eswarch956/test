@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\testNewController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,27 +21,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', [PageController::class, 'about']);
+// Route::get('/about', [PageController::class, 'about']);
 
-Route::get('/contact-us', [PageController::class, 'contact']);
+// Route::get('/contact-us', [PageController::class, 'contact']);
 
-Route::get('/values', [PageController::class, 'values']);
+// Route::get('/values', [PageController::class, 'values']);
 
-Route::get('/operations/{operationtype}/{operand1}/{operand2}',[PageController::class, 'operations']);
+// Route::get('/operations/{operationtype}/{operand1}/{operand2}',[PageController::class, 'operations']);
 
 ///(define the path, function or action need to be taken on requesting the path)
 
-Route::get('/document', function () {
-    return view('documentation');
-});
-Route::get('/news', function () {
-    return view('laravelNews');
-});
-Route::get('/laracasts', function () {
-    return view('laracasts');
-});
-Route::get('/ecosystem', function () {
-    return view('ecosyste');
-});
+// Route::get('/document', function () {
+//     return  response()->view('documentation');
+// });
+// Route::get('/news', function () {
+//     return view('laravelNews');
+// });
+// Route::get('/laracasts', function () {
+//     return view('laracasts');
+// });
+// Route::get('/ecosystem', function () {
+//     return view('ecosyste');
+// });
 
-Route::resource('event', testNewController::class);
+// Route::resource('event', testNewController::class);
+
+Route::resource('blog', BlogController::class);
+
+

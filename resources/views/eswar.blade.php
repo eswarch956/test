@@ -11,6 +11,11 @@
         </div>
     </div>
 </div>
+<form action={url} method="post">
+<input type="text" name="title"  />
+<input type='textarea' name="description" />
+<button type="submit" ></button>
+</form>
 
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
     <div class="flex items-center">
