@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\testNewController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,14 @@ Route::get('/', function () {
 
 // Route::resource('event', testNewController::class);
 
-Route::resource('blog', BlogController::class);
+// Route::resource('blog', BlogController::class);
 
 
+Route::get('/register', [RegisterController::class, 'create']);
+Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/login', [SessionController::class, 'create']);
+Route::post('/login', [SessionController::class, 'store']);
+Route::get('/logout',[SessionController::class, 'destroy']);
+Route::get('/dashboard', function(){
+    return view('user.dashboard');
+});

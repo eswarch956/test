@@ -16,3 +16,283 @@ Relationships
 
 
 database \h - help
+
+200 - success
+404 - not found
+500 - server error
+30.. 
+
+// routes theroy
+
+
+Route::get($uri, $callback);
+Route::post($uri, $callback);
+Route::put($uri, $callback);
+Route::patch($uri, $callback);
+Route::delete($uri, $callback);
+Route::options($uri, $callback);
+
+// matches
+
+Route::match(['get', 'post'], '/', function () {
+// this will hit on get and post method
+});
+
+// accept all methods
+
+Route::any('/', function () {
+//this will hit on any available method
+});
+
+// redirecting
+
+Route::redirect('/current, '/destination,statusCode);
+Route::redirect('/, '/dashboard,302);
+
+
+// passing parameter
+
+Route::get('user/{id}', function ($id) {
+    return 'User '.$id;
+});
+
+// optional parameter
+
+Route::get('user/{id?}', function ($id) {
+    return 'User '.$id;
+});
+
+// regular expression constraints
+
+Route::get('user/{name}', function ($name) {
+    //
+})->where('name', '[A-Za-z]+');
+
+Route::get('user/{id}', function ($id) {
+    //
+})->where('id', '[0-9]+');
+
+Route::get('user/{id}/{name}', function ($id, $name) {
+    //
+})->where(['id' => '[0-9]+', 'name' => '[a-z]+']);
+
+// named routes
+Route::get('user/profile', function () {
+    //
+})->name('profile');
+
+// middlewares
+Middleware are executed in the order they are listed in the array
+
+Route::middleware(['first', 'second'])->group(function () {
+    Route::get('/', function () {
+        // Uses first & second Middleware
+    });
+
+    Route::get('user/profile', function () {
+        // Uses first & second Middleware
+    });
+}); // the middleware close
+
+OR
+
+Route::get('/dashboard, function(){
+    return view(dashboard);
+})->middleware('auth');
+
+// route prefix
+
+Route::prefix('admin')->group(function () {
+    Route::get('users', function () {
+        // Matches The "/admin/users" URL
+    });
+});
+
+
+Request object
+
+input value
+
+$name = $request->input('name');
+$input = $request->all();
+
+// default value
+$name = $request->input('name', 'Azzy');
+
+// retrieving portion of the input data
+
+
+$input = $request->only(['username', 'password']);
+
+
+
+$input = $request->only('username', 'password');
+
+
+
+$input = $request->except(['debit_card']);
+
+
+
+$input = $request->except('debit_card');
+
+checking
+
+
+
+$request->has('name')
+
+if ($request->has(['name', 'address'])) {
+
+   //
+
+}
+
+
+if ($request->filled('name')) {
+
+   //
+
+}
+
+if ($request->hasFile('photo')) {
+
+   //
+
+}
+
+if ($request->file('photo')->isValid()) {
+
+   //
+
+}
+
+$path = $request->photo->path();
+
+$extension = $request->photo->extension();
+
+return redirect('form')->withInput();
+
+// retriving path 
+$uri = $request->path();
+
+match checking
+$request->is('admin/*')
+
+// without querry
+
+$url = $request->url();
+
+with querry
+
+$url = $request->fullUrl();
+
+method
+
+$method = $request->method();
+
+// method checking
+
+$request->isMethod('post')
+
+
+// query string
+
+$name = $request->query('name');
+$query = $request->query();
+
+
+$value = $request->cookie('name');
+
+$value = Cookie::get('name');
+
+
+
+return response('You are impressive')->cookie(
+
+   'name', 'value', $minutes
+
+);
+
+
+
+// middleware
+
+$this->middleware(function ($request, $next) {
+
+// ...
+
+return $next($request);
+
+});
+
+
+// resources
+
+Route::resource('photos', 'PhotoController')->only([
+
+   'index', 'show'
+
+]);
+
+
+
+Route::resource('photos', 'PhotoController')->except([
+
+   'create', 'store', 'update', 'destroy'
+
+]);
+
+
+Dependency Injection & Controllers
+
+use App\Repositories\UserRepository;
+
+
+ public function __construct(UserRepository $users){
+
+     
+
+   }
+
+// view exists checking
+
+use Illuminate\Support\Facades\View;
+public function show(){  
+  if(View::exists('admin.details'))
+  {
+	echo "the View of admin.details exist";
+  }
+  else
+  {
+  echo "View does not exist";
+  }
+} 
+
+
+
+//  passing data to view
+Using name array      return view('names',['n1'=> 'Yanik','n2'=>'Nonu','n3'=>'Believe Master']);
+Using with() function return view('student')->with('id',$id);
+Using compact() function return view('student', compact('n'));
+
+  @if(($id)==1) 
+
+   @unless($id==1)  
+
+   @for @endfor
+
+@foreach @endforeach
+
+@while @endwhile
+
+
+
+
+
+
+
+
+
+
+
