@@ -7,6 +7,7 @@ use App\Http\Controllers\testNewController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\PhotoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,11 +52,13 @@ Route::get('/', function () {
 // Route::resource('blog', BlogController::class);
 
 
-Route::get('/register', [RegisterController::class, 'create']);
-Route::post('/register', [RegisterController::class, 'store']);
-Route::get('/login', [SessionController::class, 'create']);
-Route::post('/login', [SessionController::class, 'store']);
-Route::get('/logout',[SessionController::class, 'destroy']);
-Route::get('/dashboard', function(){
-    return view('user.dashboard');
-});
+// Route::get('/register', [RegisterController::class, 'create']);
+// Route::post('/register', [RegisterController::class, 'store']);
+// Route::get('/login', [SessionController::class, 'create']);
+// Route::post('/login', [SessionController::class, 'store']);
+// Route::get('/logout',[SessionController::class, 'destroy']);
+// Route::get('/dashboard', function(){
+//     return view('user.dashboard');
+// });
+
+Route::resource('/photo', PhotoController::class );

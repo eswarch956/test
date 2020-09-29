@@ -291,8 +291,22 @@ Using compact() function return view('student', compact('n'));
 
 
 
+touch reservationCreate.blade.php reservationEdit.blade.php reservationSingle.blade.php reservations.blade.php dashboard.blade.php
 
 
+nav.blade.php
 
+touch home.blade.php hotels.blade.php index.blade.php
 
-
+resources/views
+    /dashboard
+        - dashboard.blade.php
+        - reservationCreate.blade.php
+        - reservationEdit.blade.php
+        - reservations.blade.php
+        - reservationSingle.blade.php
+    /partials
+        - nav.blade.php
+    home.blade.php
+    hotels.blade.php
+    index.blade.php
